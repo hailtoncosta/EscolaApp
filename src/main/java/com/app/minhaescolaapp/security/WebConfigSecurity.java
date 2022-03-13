@@ -36,11 +36,11 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 			.and().logout().logoutSuccessUrl("/login")
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
-	/*
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsServiceImpl)
 		.passwordEncoder(new BCryptPasswordEncoder());
 	}
-	*/
+	
 }
