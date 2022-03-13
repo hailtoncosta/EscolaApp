@@ -30,7 +30,7 @@ public class AlunoController {
 	@PostMapping("/cadastro/salvaraluno")
 	public ModelAndView salvarAluno(Aluno aluno) {
 			
-			aluno.setSenha(new BCryptPasswordEncoder().encode(aluno.getSenha()));
+			//aluno.setSenha(new BCryptPasswordEncoder().encode(aluno.getSenha()));
 			escolaRepository.save(aluno);
 			
 			ModelAndView modelAndView = new ModelAndView("cadastro/cadastroaluno");

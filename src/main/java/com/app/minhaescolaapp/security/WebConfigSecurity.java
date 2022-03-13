@@ -36,28 +36,11 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 			.and().logout().logoutSuccessUrl("/login")
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
-	
+	/*
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsServiceImpl)
 		.passwordEncoder(new BCryptPasswordEncoder());
 	}
-	
-	@Bean 
-	public  HttpFirewall allowUrlEncodedSlashHttpFirewall() {
-		StrictHttpFirewall fireWall =  new  StrictHttpFirewall ();
-	    fireWall.setAllowUrlEncodedSlash( true );    
-	    return fireWall;
-	}
-	
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
-	}
-	
-	@Bean
-	public HttpFirewall defaultHttpFirewall() {
-	    return new StrictHttpFirewall();
-	}
-	
+	*/
 }
