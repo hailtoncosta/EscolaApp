@@ -39,6 +39,18 @@ public class AlunoController {
 			return modelAndView;
 	}
 	
+	@PostMapping("/cadastro/errorpage/salvaraluno")
+	public ModelAndView salvarErrorPage(Aluno aluno) {
+			
+			aluno.setSenha(new BCryptPasswordEncoder().encode(aluno.getSenha()));
+			escolaRepository.save(aluno);
+			
+			ModelAndView modelAndView = new ModelAndView("cadastro/errorpage");
+			modelAndView.addObject("objaluno", new Aluno());
+			modelAndView.addObject("listaalunos", escolaRepository.findAll());
+			return modelAndView;
+	}
+	
 	@GetMapping("/cadastro/listaraluno")
 	public ModelAndView acessarAluno() {
 		ModelAndView modelAndView = new ModelAndView("cadastro/listaraluno");

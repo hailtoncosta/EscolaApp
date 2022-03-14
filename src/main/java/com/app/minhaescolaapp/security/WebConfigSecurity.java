@@ -32,7 +32,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 			.and().formLogin().permitAll()
 			.loginPage("/login")
 			.defaultSuccessUrl("/index")
-			.failureUrl("/login?error=true")
+			.failureUrl("/cadastro/errorpage")
 			.and().logout().logoutSuccessUrl("/login")
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
