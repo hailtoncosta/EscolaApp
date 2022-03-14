@@ -13,6 +13,20 @@
 
 <title>Tela de Login</title>
 
+<script type="text/javascript">
+function onlynumber(evt) {
+	   var theEvent = evt || window.event;
+	   var key = theEvent.keyCode || theEvent.which;
+	   key = String.fromCharCode( key );
+	   //var regex = /^[0-9.,]+$/;
+	   var regex = /^[0-9.]+$/;
+	   if( !regex.test(key) ) {
+	      theEvent.returnValue = false;
+	      if(theEvent.preventDefault) theEvent.preventDefault();
+	   }
+	}
+</script>
+
 <style type="text/css">
 /* BASIC */
 
@@ -322,10 +336,11 @@ a {
 
 		<form th:action = "@{/login}" method="post">
 				<input type="text" id="username" name="username" class="fadeIn second" placeholder="LOGIN">
-				<input type="password" id="password" name="password" class="fadeIn second" placeholder="DATA DE NASCIMENTO">
+				<input type="password" id="password" name="password" class="fadeIn second" placeholder="DATA DE NASCIMENTO" onkeypress="return onlynumber();"
+					maxlength="8">
 				<input type="submit" class="fadeIn fourth" value="ENTRAR">
 				<br>
-				<h5>*Obs: Data de nascimento somente números sem as barras. Ex:00/00/0000</h5>
+				<h5>*Obs: Data de nascimento somente números sem "/".</h5>
 		</form>
 	</div>
 </div>
