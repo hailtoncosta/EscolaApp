@@ -19,10 +19,9 @@ public class PrincipalController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/cadastro/errorpage")
+	@GetMapping("/errorpage/errorpage")
 	public ModelAndView acessarErrorPage() {
-		ModelAndView modelAndView = new ModelAndView("cadastro/errorpage");
+		ModelAndView modelAndView = new ModelAndView("errorpage/errorpage");
 		return modelAndView;
 	}
-
 }

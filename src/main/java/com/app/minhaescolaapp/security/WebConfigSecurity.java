@@ -28,11 +28,14 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 			.disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/").permitAll()
-			.anyRequest().authenticated()
-			.and().formLogin().permitAll()
+			//.anyRequest() //Qualquer requisição
+			//.authenticated() //Precisa está autenticado
+			.and()
+			.formLogin()
+			.permitAll()
 			.loginPage("/login")
 			.defaultSuccessUrl("/index")
-			.failureUrl("/cadastro/errorpage")
+			.failureUrl("/errorpage/errorpage")
 			.and().logout().logoutSuccessUrl("/login")
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
@@ -41,6 +44,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsServiceImpl)
 		.passwordEncoder(new BCryptPasswordEncoder());
-	}
+		
+	}	
 	
 }
