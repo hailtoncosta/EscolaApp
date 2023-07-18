@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.app.minhaescolaapp.model.Disciplina;
 import com.app.minhaescolaapp.repository.DisciplinaRepository;
-import com.app.minhaescolaapp.repository.EscolaRepository;
+import com.app.minhaescolaapp.repository.UsuarioRepository;
 
 @Controller
 public class DisciplinaController {
@@ -16,14 +16,14 @@ public class DisciplinaController {
 	private DisciplinaRepository disciplinaRepository;
 	
 	@Autowired
-	private EscolaRepository escolaRepository;
+	private UsuarioRepository usuarioRepository;
 	
 	@GetMapping("/disciplina/disciplina")
 	public ModelAndView cadastrarDisciplina(Disciplina disciplina) {
 		
 		ModelAndView modelAndView = new ModelAndView("disciplina/disciplina");
 		modelAndView.addObject("objdisciplina", new Disciplina());
-		modelAndView.addObject("listaalunos", escolaRepository.findAll());
+		modelAndView.addObject("listaalunos", usuarioRepository.findAll());
 		modelAndView.addObject("listadisciplina", disciplinaRepository.findAll());
 		return modelAndView;
 	}

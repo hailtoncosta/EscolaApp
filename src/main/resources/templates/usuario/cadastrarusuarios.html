@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/layout}">
+
+
+<div class="main-content container-fluid" layout:fragment="corpo">
+	<div class="page-title">
+		<div class="row">
+			<div class="col-12 col-md-6 order-md-1 order-last">
+				<h3>Cadastro de Usuários</h3>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-12"></div>
+	<!-- Input Style start -->
+	<section id="input-style">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<form action = "/salvarusuario" method="post" th:object = "${objusuarios}">
+							<div class="row">
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="usuario">Usuário</label> <input type="text"
+											id="login" name="login" class="form-control round" th:field="*{login}"
+											placeholder="Usuário">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="senha">Senha</label> <input type="password" th:field="*{senha}"
+											id="senha" name="senha" class="form-control round"
+											placeholder="Senha">
+									</div>
+								</div>
+							</div>
+								<input type="hidden" id="id" name="id" th:field="*{id}">
+							<div class="buttons">
+								<button type="submit" class="btn btn-primary round">Salvar</button>
+								<a class="btn btn-danger round" href="/usuario/listarusuarios">
+									Cancelar
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+</html>

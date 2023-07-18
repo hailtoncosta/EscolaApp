@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PrincipalController {
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	public ModelAndView acessarPrincipal() {
 		ModelAndView modelAndView = new ModelAndView("login");
 		return modelAndView;

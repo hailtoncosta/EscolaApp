@@ -15,7 +15,7 @@ public class Disciplina {
 	private Long id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Aluno aluno;
+	private Usuario aluno;
 	
 	private String disciplina;
 	private Integer bimestre1;
@@ -32,10 +32,10 @@ public class Disciplina {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Aluno getAluno() {
+	public Usuario getAluno() {
 		return aluno;
 	}
-	public void setAluno(Aluno aluno) {
+	public void setAluno(Usuario aluno) {
 		this.aluno = aluno;
 	}
 	public Integer getBimestre1() {
