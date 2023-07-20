@@ -16,6 +16,10 @@ public class Secretario extends Pessoa {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_professor")
 	private Long id;
 	
+	public Secretario() {
+		
+	}
+	
 	public Secretario(String nome, String cpf, String telefone, String email, String endereco, String foto) {
 		super(nome, cpf, telefone, email, endereco, foto);
 	}
