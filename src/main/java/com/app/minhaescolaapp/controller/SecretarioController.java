@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.app.minhaescolaapp.model.Professor;
 import com.app.minhaescolaapp.model.Secretario;
 import com.app.minhaescolaapp.repository.SecretarioRepository;
 import com.app.minhaescolaapp.service.SecretarioService;

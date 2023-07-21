@@ -10,7 +10,7 @@
 	layout:fragment="corpo">
 	<div class="row">
 		<div class="col-12 col-md-6 order-md-1 order-last">
-			<h3>Tabela de Tesoureiros</h3>
+			<h3>Tabela de Funcionários</h3>
 		</div>
 
 	</div>
@@ -20,9 +20,9 @@
 				<div class="d-flex align-items-end row">
 					<div class="card-body">
 						<div>
-							<a href="/tesoureiro/cadastrartesoureiro">
+							<a href="/funcionario/cadastrarfuncionario">
 								<button type="button" class="btn btn-success">Cadastrar
-									Tesoureiros</button>
+									Funcionários</button>
 							</a>
 						</div>
 
@@ -46,21 +46,21 @@
 									</thead>
 									<tbody>
 
-										<tr th:each="tesoureiros : ${listartesoureiros}">
-											<td th:text="${tesoureiros.id}"></td>
-											<td th:text="${tesoureiros.nome}"></td>
-											<td th:text="${tesoureiros.cpf}"></td>
-											<td th:text="${tesoureiros.telefone}"></td>
-											<td th:text="${tesoureiros.email}"></td>
-											<td th:text="${tesoureiros.endereco}"></td>
-											<td th:text="${tesoureiros.foto}"></td>
+										<tr th:each="funcionarios : ${listarfuncionarios}">
+											<td th:text="${funcionarios.id}"></td>
+											<td th:text="${funcionarios.nome}"></td>
+											<td th:text="${funcionarios.cpf}"></td>
+											<td th:text="${funcionarios.telefone}"></td>
+											<td th:text="${funcionarios.email}"></td>
+											<td th:text="${funcionarios.endereco}"></td>
+											<td th:text="${funcionarios.foto}"></td>
 											<td><a type="button" class="badge bg-success"
-												th:href="@{/tesoureiro/editartesoureiro/{id}(id=${tesoureiros.id})}">Editar</a>
+												th:href="@{/funcionario/editarfuncionario/{id}(id=${funcionarios.id})}">Editar</a>
 												<a type="button" data-toggle="modal"
-												th:attr="data-target='#remover_'+${tesoureiros.id}"> <i
+												th:attr="data-target='#remover_'+${funcionarios.id}"> <i
 													class="badge bg-danger">Excluir</i>
 											</a> <!-- INICIO DO MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
-												<div class="modal fade" th:id="remover_+${tesoureiros.id}"
+												<div class="modal fade" th:id="remover_+${funcionarios.id}"
 													tabindex="-1" role="dialog" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered"
 														role="document">
@@ -73,13 +73,13 @@
 																</button>
 															</div>
 															<div class="modal-body">
-																<p>Tem certeza que quer remover o tesoureiro?</p>
+																<p>Tem certeza que quer remover o funcionário?</p>
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-secondary"
 																	data-dismiss="modal">Não</button>
 																<a type="button" class="btn btn-primary"
-																	th:href="@{/tesoureiro/deletartesoureiro/{id}(id=${tesoureiros.id})}">Sim</a>
+																	th:href="@{/funcionario/deletarfuncionario/{id}(id=${funcionarios.id})}">Sim</a>
 															</div>
 														</div>
 													</div>
