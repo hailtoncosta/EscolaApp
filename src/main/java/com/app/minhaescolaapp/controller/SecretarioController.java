@@ -31,7 +31,7 @@ public class SecretarioController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/secretario/salvarsecretario")
+	@PostMapping("/salvarsecretario")
 	public ModelAndView salvarSecretario(Secretario secretario) {
 		secretarioService.salvarSecretario(secretario);
 		ModelAndView modelAndView = new ModelAndView("secretario/listarsecretarios");

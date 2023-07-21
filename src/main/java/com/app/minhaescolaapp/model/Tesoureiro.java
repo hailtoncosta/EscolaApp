@@ -7,20 +7,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "secretario")
-public class Secretario extends Pessoa {
+@Table(name = "tesoureiro")
+public class Tesoureiro extends Pessoa {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_secretario")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_tesoureiro")
 	private Long id;
 	
-	public Secretario() {
+	public Tesoureiro() {
 		
 	}
 	
-	public Secretario(String nome, String cpf, String telefone, String email, String endereco, String foto) {
+	public Tesoureiro(String nome, String cpf, String telefone, String email, String endereco, String foto) {
 		super(nome, cpf, telefone, email, endereco, foto);
 	}
 

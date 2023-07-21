@@ -8,7 +8,7 @@
 	<div class="page-title">
 		<div class="row">
 			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>Cadastro de Secretários</h3>
+				<h3>Cadastro de Tesoureiros</h3>
 			</div>
 		</div>
 
@@ -20,7 +20,7 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-body">
-						<form action = "/salvarsecretario" method="post" th:object = "${objsecretarios}">
+						<form action = "/salvartesoureiro" method="post" th:object = "${objtesoureiros}">
 						
 							<div class="row">
 								<div class="col-sm-6">
@@ -75,7 +75,7 @@
 								<input type="hidden" id="id" name="id" th:field=*{id}>
 							<div class="buttons">
 								<button type="submit" class="btn btn-primary round">Salvar</button>
-								<a class="btn btn-danger round" href="/secretario/listarsecretarios">
+								<a class="btn btn-danger round" href="/tesoureiro/listartesoureiros">
 									Cancelar
 								</a>
 							</div>
