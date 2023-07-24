@@ -9,29 +9,29 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.app.minhaescolaapp.model.Professor;
+import com.app.minhaescolaapp.model.Sala;
 
-public interface ProfessorRepository extends JpaRepository<Professor, Long>{
+public interface SalaRepository extends JpaRepository<Sala, Long>{
 	
-	@Query("select p from Professor p where p.nome like %?1%")
-	List<Professor> buscarProfessorPorNome(String nome);
+	@Query("select s from Sala s where s.descricaoSala like %?1%")
+	List<Sala> buscarFuncionarioPorNome(String descricaoSala);
 
-	default Page<Professor> findProfessoresByNamePage(String nome, Pageable pageable) {
+	default Page<Sala> findSalaByNamePage(String discricaoSala, Pageable pageable) {
 
-		Professor professor = new Professor();
-		professor.setNome(nome);;
+		Sala sala = new Sala();
+		sala.setDescricaoSala(discricaoSala);
 
 		// Estamos configurando a pesquisa para consultar por partes do nome no banco de
 		// dados, igual ao Like do SQL
-		ExampleMatcher exampleMatcher = ExampleMatcher.matchingAny().withMatcher("nome",
+		ExampleMatcher exampleMatcher = ExampleMatcher.matchingAny().withMatcher("descricaoSala",
 				ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
 
 		// Une o objeto com o valor e a configuração para consultar
-		Example<Professor> example = Example.of(professor, exampleMatcher);
+		Example<Sala> example = Example.of(sala, exampleMatcher);
 
-		Page<Professor> professores = findAll(example, pageable);
+		Page<Sala> salas = findAll(example, pageable);
 
-		return professores;
+		return salas;
 	}
 
 }

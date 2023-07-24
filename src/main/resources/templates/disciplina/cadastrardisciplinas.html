@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/layout}">
+
+
+<div class="main-content container-fluid" layout:fragment="corpo">
+	<div class="page-title">
+		<div class="row">
+			<div class="col-12 col-md-6 order-md-1 order-last">
+				<h3>Cadastro de Disciplinas</h3>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-12"></div>
+	<!-- Input Style start -->
+	<section id="input-style">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<form action = "/salvardisciplina" method="post" th:object = "${objdisciplina}">
+							<div class="row">
+
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label for="discricaoDisciplina">Descrição da Disciplina</label> 
+										<input type="text" id="discricaoDisciplina" name="discricaoDisciplina" class="form-control round" 
+											placeholder="Disciplina" th:field = "*{discricaoDisciplina}">
+									</div>
+								</div>
+							</div>
+								<input type="hidden" id="id" name="id" th:field = "*{id}">
+							<div class="buttons">
+								<button type="submit" class="btn btn-primary round">Salvar</button>
+								<a class="btn btn-danger round" href="/disciplina/listardisciplinas">
+									Cancelar
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+</html>

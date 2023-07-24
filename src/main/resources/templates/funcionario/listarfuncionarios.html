@@ -9,10 +9,21 @@
 <div class="container-xxl flex-grow-1 container-p-y"
 	layout:fragment="corpo">
 	<div class="row">
-		<div class="col-12 col-md-6 order-md-1 order-last">
-			<h3>Tabela de Funcionários</h3>
-		</div>
+		<div>
+			<form action="/pesquisarfuncionario" method="post"
+				id="pesquisarfuncionario">
+				<div class="row">
+					<div class="col-04 col-md-6 order-md-1 order-last">
+						<h3>Tabela de Funcionários</h3>
+					</div>
 
+					<div class="col-08 col-md-6 order-md-1 order-last">
+						<input type="text" id="nomepesquisa" name="nomepesquisa">
+						<button class="btn btn-success">Pesquisar</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12 mb-4 order-0">
@@ -91,6 +102,26 @@
 									</tbody>
 								</table>
 							</div>
+						</div>
+						
+						<!-- INICIO DE PAGINAÇÃO -->
+						<div class="col s12" style="margin-top: 30px;">
+							<center>
+								<span> <a
+									th:href="@{/funcionariospage(page=${listarfuncionarios.number - 1}, size=${listarfuncionarios.size})}">[Anterior]</a>
+								</span>
+
+								<th:block
+									th:each="i : ${#numbers.sequence(0, listarfuncionarios.totalPages - 1)}">
+									<a
+										th:href="@{/funcionariospage(page=${i}, size=${listarfuncionarios.size})}">[[
+										${i} + 1 ]]</a>
+								</th:block>
+
+								<span> <a
+									th:href="@{/funcionariospage(page=${listarfuncionarios.number + 1}, size=${listarfuncionarios.size})}">[Próximo]</a>
+								</span>
+							</center>
 						</div>
 
 					</section>

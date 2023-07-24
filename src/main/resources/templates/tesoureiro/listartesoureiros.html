@@ -9,9 +9,21 @@
 <div class="container-xxl flex-grow-1 container-p-y"
 	layout:fragment="corpo">
 	<div class="row">
-		<div class="col-12 col-md-6 order-md-1 order-last">
-			<h3>Tabela de Tesoureiros</h3>
-		</div>
+		<div>
+		<form action="/pesquisartesoureiro" method="post"
+			id="pesquisartesoureiro">
+			<div class="row">
+				<div class="col-04 col-md-6 order-md-1 order-last">
+					<h3>Tabela de Tesoureiros</h3>
+				</div>
+
+				<div class="col-08 col-md-6 order-md-1 order-last">
+					<input type="text" id="nomepesquisa" name="nomepesquisa">
+					<button class="btn btn-success">Pesquisar</button>
+				</div>
+			</div>
+		</form>
+	</div>
 
 	</div>
 	<div class="row">
@@ -91,6 +103,26 @@
 									</tbody>
 								</table>
 							</div>
+						</div>
+						
+						<!-- INICIO DE PAGINAÇÃO -->
+						<div class="col s12" style="margin-top: 30px;">
+							<center>
+								<span> <a
+									th:href="@{/tesoureirospage(page=${listartesoureiros.number - 1}, size=${listartesoureiros.size})}">[Anterior]</a>
+								</span>
+
+								<th:block
+									th:each="i : ${#numbers.sequence(0, listartesoureiros.totalPages - 1)}">
+									<a
+										th:href="@{/tesoureirospage(page=${i}, size=${listartesoureiros.size})}">[[
+										${i} + 1 ]]</a>
+								</th:block>
+
+								<span> <a
+									th:href="@{/tesoureirospage(page=${listartesoureiros.number + 1}, size=${listartesoureiros.size})}">[Próximo]</a>
+								</span>
+							</center>
 						</div>
 
 					</section>

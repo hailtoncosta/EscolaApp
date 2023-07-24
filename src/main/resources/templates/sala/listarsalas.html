@@ -10,10 +10,10 @@
 	layout:fragment="corpo">
 
 	<div>
-		<form action="/pesquisarusuario" method="post" id="pesquisarusuario">
+		<form action="/pesquisarsala" method="post" id="pesquisarsala">
 			<div class="row">
 				<div class="col-04 col-md-6 order-md-1 order-last">
-					<h3>Tabela de Usuários</h3>
+					<h3>Tabela de Salas</h3>
 				</div>
 
 				<div class="col-08 col-md-6 order-md-1 order-last">
@@ -30,10 +30,9 @@
 				<div class="d-flex align-items-end row">
 					<div class="row">
 						<div class="card-body">
-							<a href="/usuario/cadastrarusuarios">
+							<a href="/sala/cadastrarsala">
 								<button type="button" class="btn btn-success">Cadastrar
-									Usuários</button>
-
+									Salas</button>
 							</a>
 						</div>
 					</div>
@@ -45,23 +44,21 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Usuário</th>
-											<th>Senha</th>
+											<th>Descrição</th>
 											<th>Ação</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="usuarios : ${listarusuarios}">
-											<td th:text="${usuarios.id}"></td>
-											<td th:text="${usuarios.login}"></td>
-											<td th:text="${usuarios.senha}"></td>
+										<tr th:each="salas : ${listarsalas}">
+											<td th:text="${salas.id}"></td>
+											<td th:text="${salas.descricaoSala}"></td>
 											<td><a type="button" class="badge bg-success"
-												th:href="@{/usuario/editarusuario/{id}(id=${usuarios.id})}">Editar</a>
+												th:href="@{/sala/editarsala/{id}(id=${salas.id})}">Editar</a>
 												<a type="button" data-toggle="modal"
-												th:attr="data-target='#remover_'+${usuarios.id}"> <i
+												th:attr="data-target='#remover_'+${salas.id}"> <i
 													class="badge bg-danger">Excluir</i>
 											</a> <!-- INICIO DO MODAL DE CONFIRMAÇÃO DE EXCLUSÃO-->
-												<div class="modal fade" th:id="remover_+${usuarios.id}"
+												<div class="modal fade" th:id="remover_+${salas.id}"
 													tabindex="-1" role="dialog" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered"
 														role="document">
@@ -74,13 +71,13 @@
 																</button>
 															</div>
 															<div class="modal-body">
-																<p>Tem certeza que quer remover o usuário?</p>
+																<p>Tem certeza que quer remover a sala?</p>
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-secondary"
 																	data-dismiss="modal">Não</button>
 																<a type="button" class="btn btn-primary"
-																	th:href="@{/usuario/deletarusuario/{id}(id=${usuarios.id})}">Sim</a>
+																	th:href="@{/sala/deletarsala/{id}(id=${salas.id})}">Sim</a>
 															</div>
 														</div>
 													</div>
@@ -96,18 +93,18 @@
 						<div class="col s12" style="margin-top: 30px;">
 							<center>
 								<span> <a
-									th:href="@{/usuariospage(page=${listarusuarios.number - 1}, size=${listarusuarios.size})}">[Anterior]</a>
+									th:href="@{/salaspage(page=${listarsalas.number - 1}, size=${listarsalas.size})}">[Anterior]</a>
 								</span>
 
 								<th:block
-									th:each="i : ${#numbers.sequence(0, listarusuarios.totalPages - 1)}">
+									th:each="i : ${#numbers.sequence(0, listarsalas.totalPages - 1)}">
 									<a
-										th:href="@{/usuariospage(page=${i}, size=${listarusuarios.size})}">[[
+										th:href="@{/salaspage(page=${i}, size=${listarsalas.size})}">[[
 										${i} + 1 ]]</a>
 								</th:block>
 
 								<span> <a
-									th:href="@{/usuariospage(page=${listarusuarios.number + 1}, size=${listarusuarios.size})}">[Próximo]</a>
+									th:href="@{/salaspage(page=${listarsalas.number + 1}, size=${listarsalas.size})}">[Próximo]</a>
 								</span>
 							</center>
 						</div>

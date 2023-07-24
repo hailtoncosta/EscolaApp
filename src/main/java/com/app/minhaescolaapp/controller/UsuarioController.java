@@ -3,10 +3,17 @@ package com.app.minhaescolaapp.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.minhaescolaapp.model.Usuario;
@@ -38,7 +45,7 @@ public class UsuarioController {
 	@GetMapping("/usuario/listarusuarios")
 	public ModelAndView listarUsuario() {
 		ModelAndView modelAndView = new ModelAndView("/usuario/listarusuarios");
-		modelAndView.addObject("listarusuarios", usuarioRepository.findAll());
+		modelAndView.addObject("listarusuarios", usuarioRepository.findAll(PageRequest.of(0, 5, Sort.by("login"))));
 		return modelAndView;
 	}
 	
@@ -56,4 +63,30 @@ public class UsuarioController {
 		return modelAndView;
 	}
 	
+	@GetMapping("/usuariospage")
+	public ModelAndView carregaUsuariosPorPaginacao(@PageableDefault(size = 5) Pageable pageable, ModelAndView modelAndView) {
+		
+		Page<Usuario> pageUsuario = usuarioRepository.findAll(pageable);
+		modelAndView.addObject("listarusuarios", pageUsuario);
+		modelAndView.addObject("objusuarios", new Usuario());
+		modelAndView.setViewName("/usuario/listarusuarios");
+		
+		return modelAndView;
+	}
+	
+	@PostMapping("/pesquisarusuario")
+	public ModelAndView pesquisarPaciente(@RequestParam("nomepesquisa") String nomepesquisa, 
+			@PageableDefault(size=5, sort= {"login"}) Pageable pageable) {
+		
+		Page<Usuario> usuarios = null;
+		
+		usuarios = usuarioRepository.findUsuariosByNamePage(nomepesquisa, pageable);
+		
+		ModelAndView modelAndView = new ModelAndView("usuario/listarusuarios");
+		modelAndView.addObject("listarusuarios", usuarios);
+		modelAndView.addObject("objusuarios", new Usuario());
+		modelAndView.addObject("nomepesquisa", nomepesquisa);
+		
+		return modelAndView;
+	}
 }
